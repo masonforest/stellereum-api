@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "request": "^2.79.0",
+    "stellar-sdk": "^0.6.2",
+    "web3": "^0.17.0-beta"
+  }
+}
