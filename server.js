@@ -2,6 +2,9 @@ var request = require('request');
 var Web3 = require('web3');
 var BigNumber = require('bignumber.js');
 var web3 = new Web3(new Web3.providers.HttpProvider(process.env.ETHEREUM_RPC_URL));
+var express = require('express');
+var app = express();
+
 const SOURCE_KEY = process.env.SOURCE_KEY;
 const CONTRACT_ADDRESS = process.env.CONTRACT_ADDRESS;
 const CONTRACT_API =
@@ -48,4 +51,17 @@ function pay({transactionHash, accountId, amount}){
     }
   });
 }
-require('net').createServer().listen(process.env.PORT);
+
+app.get('/federation', function (req, res) {
+  const [ address, domain ] = req.query.q.split('*')
+  res.send(JSON.stringify({
+    stellar_address:  req.query.q,
+    account_id: process.env.ASSET_ISSUER,
+    memo_type: "text",
+    memo: address
+  }));
+})
+
+app.listen(process.env.PORT, function () {
+    console.log(`Example app listening on port ${process.env.PORT}!`)
+})
