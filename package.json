@@ -1,7 +1,9 @@
 {
   "dependencies": {
     "bignumber.js": "^4.0.0",
+    "body-parser": "^1.16.0",
     "cors": "^2.8.1",
+    "ethereumjs-tx": "^1.2.5",
     "express": "^4.14.1",
     "request": "^2.79.0",
     "stellar-sdk": "^0.6.2",
